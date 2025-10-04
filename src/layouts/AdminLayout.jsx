@@ -1,18 +1,15 @@
-// src/layouts/AdminLayout.jsx
-
-import { Outlet } from 'react-router-dom'; // 1. WAJIB: Import Outlet
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 
-const AdminLayout = () => { // Hapus props { children }
+const AdminLayout = () => {
   return (
-    <div className="flex min-h-screen bg-gray-100 font-sans">
+    // 1. Ubah min-h-screen menjadi h-screen dan tambahkan overflow-hidden
+    <div className="flex h-screen overflow-hidden bg-gray-100 font-sans">
       <Sidebar />
-      {/* Ganti 'div' menjadi 'main' untuk best practice.
-        'w-full' memastikan konten mengisi sisa ruang.
-      */}
-      <main className="flex-1 p-8 w-full">
-        {/* 2. Ganti {children} menjadi <Outlet /> */}
-        <Outlet /> 
+      {/* 2. Tambahkan overflow-y-auto agar area ini bisa di-scroll */}
+      <main className="flex-1 w-full p-8 overflow-y-auto">
+        <Outlet />
       </main>
     </div>
   );

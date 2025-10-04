@@ -1,6 +1,6 @@
 // src/pages/BatchManagement.jsx
 
-import React from 'react';
+
 import { motion } from 'framer-motion';
 import { FaPlus, FaSearch, FaEdit, FaTrash } from 'react-icons/fa';
 
@@ -11,6 +11,20 @@ const batchData = [
   { id: 'B003', productName: 'Azarine Hydrasoothe Sunscreen Gel', quantity: 300, entryDate: '2023-10-10', expiryDate: '2026-04-10' },
   { id: 'L004', productName: 'Avoskin Miraculous Refining Toner', quantity: 120, entryDate: '2023-10-12', expiryDate: '2025-11-12' },
   { id: 'B005', productName: 'Scarlett Whitening Acne Serum', quantity: 250, entryDate: '2023-10-15', expiryDate: '2024-10-15' },
+   { id: 'B001', productName: 'Garnier Micellar Water Pink', quantity: 210, entryDate: '2023-11-05', expiryDate: '2025-11-05' },
+  { id: 'L002', productName: 'Wardah Lightening Day Gel', quantity: 180, entryDate: '2023-11-10', expiryDate: '2025-11-10' },
+  { id: 'B003', productName: 'Emina Bright Stuff Face Wash', quantity: 250, entryDate: '2023-11-15', expiryDate: '2026-05-15' },
+  { id: 'L004', productName: 'MS Glow Whitening Night Cream', quantity: 130, entryDate: '2023-11-20', expiryDate: '2025-12-20' },
+  { id: 'B005', productName: 'Ponds Magic Powder BB', quantity: 300, entryDate: '2023-11-25', expiryDate: '2024-11-25' },
+  { id: 'B001', productName: 'Garnier Micellar Water Pink', quantity: 210, entryDate: '2023-11-05', expiryDate: '2025-11-05' },
+  { id: 'L002', productName: 'Wardah Lightening Day Gel', quantity: 180, entryDate: '2023-11-10', expiryDate: '2025-11-10' },
+  { id: 'B003', productName: 'Emina Bright Stuff Face Wash', quantity: 250, entryDate: '2023-11-15', expiryDate: '2026-05-15' },
+  { id: 'L004', productName: 'MS Glow Whitening Night Cream', quantity: 130, entryDate: '2023-11-20', expiryDate: '2025-12-20' },
+  { id: 'B005', productName: 'Ponds Magic Powder BB', quantity: 300, entryDate: '2023-11-25', expiryDate: '2024-11-25' },
+  { id: 'B006', productName: 'Nivea Sun Protect & White SPF 50', quantity: 175, entryDate: '2023-12-01', expiryDate: '2026-01-01' },
+  { id: 'L007', productName: 'Viva Milk Cleanser Lemon', quantity: 400, entryDate: '2023-12-05', expiryDate: '2025-06-05' },
+  { id: 'B008', productName: 'Biore UV Aqua Rich Watery Essence', quantity: 220, entryDate: '2023-12-10', expiryDate: '2026-06-10' },
+  { id: 'L009', productName: 'Hanasui Serum Vitamin C', quantity: 190, entryDate: '2023-12-15', expiryDate: '2025-07-15' },
 ];
 
 const BatchManagement = () => {

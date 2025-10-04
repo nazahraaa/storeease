@@ -7,6 +7,10 @@ import AdminLayout from './layouts/AdminLayout';
 import AdminDashboard from './pages/AdminDashboard';
 import BatchManagement from './pages/BatchManagement';
 
+// 1. PASTIKAN IMPORT INI SUDAH ADA DAN BENAR
+import BarangMasuk from './pages/BarangMasuk';
+import BarangKeluar from './pages/BarangKeluar';
+
 function App() {
   return (
     <Routes>
@@ -17,10 +21,13 @@ function App() {
       {/* Rute Induk untuk Admin dengan Layout */}
       <Route path="/admin" element={<AdminLayout />}>
         {/* Halaman anak akan dirender di dalam <Outlet /> */}
+        <Route index element={<Navigate to="dashboard" />} /> {/* Arahkan /admin ke /admin/dashboard */}
         <Route path="dashboard" element={<AdminDashboard />} />
         <Route path="batch-management" element={<BatchManagement />} />
-        {/* Tambahkan rute admin lainnya di sini, contoh: */}
-        {/* <Route path="barang-masuk" element={<BarangMasukPage />} /> */}
+        
+        {/* 2. PASTIKAN RUTE INI SUDAH ADA */}
+        <Route path="barang-masuk" element={<BarangMasuk />} />
+        <Route path="barang-keluar" element={<BarangKeluar />} />
       </Route>
 
       {/* Redirect dari halaman utama ke login */}
