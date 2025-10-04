@@ -11,6 +11,7 @@ import {
   FaQuestionCircle,
   FaChevronLeft,
   FaChevronRight,
+  FaTags, // Ikon baru untuk Batch/Lot Number
 } from 'react-icons/fa';
 
 const Sidebar = () => {
@@ -23,7 +24,8 @@ const Sidebar = () => {
 
   const navLinks = [
     { to: '/admin/dashboard', icon: <FaTachometerAlt />, text: 'Dashboard' },
-    { to: '/admin/produk', icon: <FaBoxOpen />, text: 'Manajemen Produk' },
+    // PERUBAHAN DI SINI: Teks dan Ikon diperbarui
+    { to: '/admin/batch-management', icon: <FaTags />, text: 'Manajemen Batch/Lot Number' },
     { to: '/admin/barang-masuk', icon: <FaArrowCircleDown />, text: 'Barang Masuk' },
     { to: '/admin/barang-keluar', icon: <FaArrowCircleUp />, text: 'Barang Keluar' },
     { to: '/admin/laporan', icon: <FaFileAlt />, text: 'Laporan Stok' },
