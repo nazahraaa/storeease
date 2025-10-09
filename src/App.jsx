@@ -6,10 +6,12 @@ import Register from './pages/Register';
 import AdminLayout from './layouts/AdminLayout';
 import AdminDashboard from './pages/AdminDashboard';
 import BatchManagement from './pages/BatchManagement';
-
-// 1. PASTIKAN IMPORT INI SUDAH ADA DAN BENAR
 import BarangMasuk from './pages/BarangMasuk';
 import BarangKeluar from './pages/BarangKeluar';
+import LaporanStok from './pages/LaporanStok';
+import ManajemenPengguna from './pages/ManajemenPengguna';
+import RiwayatAktivitas from './pages/RiwayatAktivitas';
+import Bantuan from './pages/Bantuan'; // <-- 1. IMPORT HALAMAN BARU
 
 function App() {
   return (
@@ -20,14 +22,18 @@ function App() {
 
       {/* Rute Induk untuk Admin dengan Layout */}
       <Route path="/admin" element={<AdminLayout />}>
-        {/* Halaman anak akan dirender di dalam <Outlet /> */}
-        <Route index element={<Navigate to="dashboard" />} /> {/* Arahkan /admin ke /admin/dashboard */}
+        <Route index element={<Navigate to="dashboard" />} />
         <Route path="dashboard" element={<AdminDashboard />} />
         <Route path="batch-management" element={<BatchManagement />} />
-        
-        {/* 2. PASTIKAN RUTE INI SUDAH ADA */}
         <Route path="barang-masuk" element={<BarangMasuk />} />
         <Route path="barang-keluar" element={<BarangKeluar />} />
+        <Route path="laporan" element={<LaporanStok />} />
+        <Route path="pengguna" element={<ManajemenPengguna />} />
+        <Route path="riwayat" element={<RiwayatAktivitas />} />
+        
+        {/* 2. TAMBAHKAN RUTE INI */}
+        <Route path="bantuan" element={<Bantuan />} />
+
       </Route>
 
       {/* Redirect dari halaman utama ke login */}
