@@ -6,13 +6,15 @@ import { FaPlus, FaSearch, FaEdit, FaTrash, FaUserShield, FaUserCog } from 'reac
 
 // Data dummy untuk pengguna. Nantinya, ini akan diambil dari database.
 const userData = [
-  { id: 1, name: 'Nana', username: 'nana', email: 'nazahra@example.com', role: 'Admin', status: 'Aktif' },
-  { id: 2, name: 'Pengguna Baru', username: 'pengguna_baru', email: 'user@example.com', role: 'User', status: 'Aktif' },
-  { id: 3, name: 'Budi Santoso', username: 'budi_s', email: 'budi@example.com', role: 'User', status: 'Tidak Aktif' },
-  { id: 4, name: 'Siti Aminah', username: 'siti_a', email: 'siti@example.com', role: 'User', status: 'Aktif' },
-  { id: 5, name: 'Admin Gudang', username: 'gudang_admin', email: 'gudang@example.com', role: 'Admin', status: 'Aktif' },
+  { id: 1, name: 'Andrina Zahra', username: 'nana', email: 'nazahra@example.com', role: 'Admin', status: 'Aktif' },
+  { id: 2, name: 'Abelya Octaviani', username: 'abel', email: 'abelov@example.com', role: 'User', status: 'Aktif' },
+  { id: 3, name: 'Aisyah Aeni', username: 'aisyah', email: 'aisyah@example.com', role: 'User', status: 'Tidak Aktif' },
+  { id: 4, name: 'Farah Monica', username: 'farah', email: 'farahmnc@example.com', role: 'User', status: 'Aktif' },
+  { id: 5, name: 'Fidela', username: 'fidel', email: 'dela@example.com', role: 'Admin', status: 'Aktif' },
+  { id: 4, name: 'Nabilah Rachmawati', username: 'nabilah', email: 'bila@example.com', role: 'User', status: 'Aktif' },
+  { id: 5, name: 'Sarah Cyntia', username: 'sarah', email: 'sarahcyn@example.com', role: 'Admin', status: 'Aktif' },
 ];
-
+ 
 const ManajemenPengguna = () => {
   const pageVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -114,4 +116,4 @@ const ManajemenPengguna = () => {
   );
 };
 
-export default ManajemenPengguna;
+export default ManajemenPengguna; 

@@ -7,11 +7,11 @@ import { FaSearch, FaUserCircle, FaPlusCircle, FaArrowCircleUp, FaArrowCircleDow
 
 // Data dummy untuk riwayat aktivitas
 const activityLog = [
-  { id: 1, user: 'nazahraaa', action: 'menambahkan batch baru', item: 'B006 - Nivea Sun Protect', time: '2 jam yang lalu', icon: <FaPlusCircle />, color: 'green' },
+  { id: 1, user: 'nana', action: 'menambahkan batch baru', item: 'B006 - Nivea Sun Protect', time: '2 jam yang lalu', icon: <FaPlusCircle />, color: 'green' },
   { id: 2, user: 'gudang_admin', action: 'mencatat barang keluar', item: '20 pcs - Scarlett Whitening Acne Serum (Batch B005)', time: '5 jam yang lalu', icon: <FaArrowCircleUp />, color: 'red' },
-  { id: 3, user: 'nazahraaa', action: 'mengubah data pengguna', item: 'budi_s', time: '1 hari yang lalu', icon: <FaEdit />, color: 'blue' },
+  { id: 3, user: 'nana', action: 'mengubah data pengguna', item: 'aisyah', time: '1 hari yang lalu', icon: <FaEdit />, color: 'blue' },
   { id: 4, user: 'pengguna_baru', action: 'mencatat barang masuk', item: '100 pcs - Hanasui Serum Vitamin C (Batch L009)', time: '2 hari yang lalu', icon: <FaArrowCircleDown />, color: 'green' },
-  { id: 5, user: 'nazahraaa', action: 'menghapus batch', item: 'B002 - Produk Lama', time: '3 hari yang lalu', icon: <FaTrash />, color: 'gray' },
+  { id: 5, user: 'nana', action: 'menghapus batch', item: 'B002 - Produk Lama', time: '3 hari yang lalu', icon: <FaTrash />, color: 'gray' },
   { id: 6, user: 'gudang_admin', action: 'mencatat barang keluar', item: '50 pcs - Azarine Sunscreen (Batch B003)', time: '4 hari yang lalu', icon: <FaArrowCircleUp />, color: 'red' },
 ];
 
