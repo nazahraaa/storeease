@@ -1,4 +1,3 @@
-// server/controllers/authController.js
 import { validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
@@ -14,7 +13,7 @@ const generateToken = (id) => {
 
 // Fungsi untuk membuat kode OTP
 const generateOTP = () => {
-  return Math.floor(100000 + Math.random() * 900000).toString(); // 6 digit
+  return Math.floor(100000 + Math.random() * 900000).toString();
 };
 
 /**
@@ -41,7 +40,7 @@ export const registerUser = async (req, res) => {
     }
 
     const code = generateOTP();
-    const expires = new Date(Date.now() + 10 * 60 * 1000); // 10 menit
+    const expires = new Date(Date.now() + 10 * 60 * 1000);
 
     const user = await User.findOneAndUpdate(
       { $or: [{ email }, { username }], isVerified: false },
@@ -189,17 +188,14 @@ export const loginUser = async (req, res) => {
       return res.status(400).json({ msg: 'Kredensial tidak valid' });
     }
 
-    // Cek jika akun belum teraktivasi (pertama kali)
     if (!user.isVerified) {
       return res.status(401).json({ 
         msg: 'Akun Anda belum terverifikasi. Silakan cek email Anda.',
-        notVerified: true, // Flag untuk frontend
+        notVerified: true,
         email: user.email
       });
     }
 
-    // --- ALUR 2SV ---
-    // Jika user SUDAH terverifikasi, jangan kirim token.
     // Kirim OTP baru untuk login.
     const code = generateOTP();
     user.verificationCode = code;
@@ -212,7 +208,7 @@ export const loginUser = async (req, res) => {
     // Kirim respons ke frontend untuk minta kode
     res.status(200).json({
       msg: 'Verifikasi 2 langkah diperlukan.',
-      step: 'verifyLogin', // Flag baru untuk frontend
+      step: 'verifyLogin',
       email: user.email,
     });
     
@@ -251,7 +247,6 @@ export const verifyLogin = async (req, res) => {
     user.verificationCodeExpires = undefined;
     await user.save();
 
-    // --- SUKSES ---
     // Buat token dan kirim ke client
     const token = generateToken(user._id);
 

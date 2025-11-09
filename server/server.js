@@ -4,7 +4,6 @@ import cors from 'cors';
 import connectDB from './config/db.js';
 import authRoutes from './routes/auth.js';
 
-// Hubungkan ke Database
 connectDB();
 
 const app = express();

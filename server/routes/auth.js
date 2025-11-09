@@ -1,4 +1,3 @@
-// server/routes/auth.js
 import express from 'express';
 import { check } from 'express-validator';
 import { 
@@ -6,12 +5,11 @@ import {
   loginUser,
   verifyUser,     
   resendCode,
-  verifyLogin   // <-- IMPORT BARU
+  verifyLogin
 } from '../controllers/authController.js';
 
 const router = express.Router();
 
-// ... (rute /register Anda tetap sama)
 router.post(
   '/register',
   [
@@ -29,7 +27,6 @@ router.post(
   registerUser
 );
 
-// ... (rute /verify Anda tetap sama)
 router.post(
   '/verify',
   [
@@ -39,7 +36,6 @@ router.post(
   verifyUser
 );
 
-// ... (rute /resend-code Anda tetap sama)
 router.post(
   '/resend-code',
   [
@@ -48,7 +44,6 @@ router.post(
   resendCode
 );
 
-// ... (rute /login Anda tetap sama)
 router.post(
   '/login',
   [

@@ -1,4 +1,3 @@
-// server/models/User.js
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
@@ -31,7 +30,6 @@ const UserSchema = new mongoose.Schema({
     enum: ['user', 'admin'],
     default: 'user',
   },
-  // --- TAMBAHAN UNTUK VERIFIKASI ---
   isVerified: {
     type: Boolean,
     default: false,
@@ -42,7 +40,6 @@ const UserSchema = new mongoose.Schema({
   verificationCodeExpires: {
     type: Date,
   },
-  // ---------------------------------
   createdAt: {
     type: Date,
     default: Date.now,
