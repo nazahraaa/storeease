@@ -1,12 +1,17 @@
+// server/routes/auth.js
 import express from 'express';
 import { check } from 'express-validator';
-import { registerUser, loginUser } from '../controllers/authController.js';
+import { 
+  registerUser, 
+  loginUser,
+  verifyUser,     
+  resendCode,
+  verifyLogin   // <-- IMPORT BARU
+} from '../controllers/authController.js';
 
 const router = express.Router();
 
-// @route   POST /api/auth/register
-// @desc    Mendaftarkan user baru
-// @access  Public
+// ... (rute /register Anda tetap sama)
 router.post(
   '/register',
   [
@@ -24,9 +29,26 @@ router.post(
   registerUser
 );
 
-// @route   POST /api/auth/login
-// @desc    Login user
-// @access  Public
+// ... (rute /verify Anda tetap sama)
+router.post(
+  '/verify',
+  [
+    check('email', 'Email tidak valid').isEmail(),
+    check('code', 'Kode verifikasi wajib diisi').not().isEmpty().isLength({ min: 6, max: 6 }),
+  ],
+  verifyUser
+);
+
+// ... (rute /resend-code Anda tetap sama)
+router.post(
+  '/resend-code',
+  [
+    check('email', 'Email tidak valid').isEmail(),
+  ],
+  resendCode
+);
+
+// ... (rute /login Anda tetap sama)
 router.post(
   '/login',
   [
@@ -34,6 +56,18 @@ router.post(
     check('password', 'Password wajib diisi').exists(),
   ],
   loginUser
+);
+
+// @route   POST /api/auth/verify-login
+// @desc    Verifikasi user (langkah 2 Login)
+// @access  Public
+router.post(
+  '/verify-login',
+  [
+    check('email', 'Email tidak valid').isEmail(),
+    check('code', 'Kode verifikasi wajib diisi').not().isEmpty().isLength({ min: 6, max: 6 }),
+  ],
+  verifyLogin
 );
 
 export default router;

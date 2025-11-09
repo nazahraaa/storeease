@@ -8,7 +8,9 @@ import LoginForm from '../components/auth/LoginForm';
 const Login = () => {
   return (
     <AuthLayout title="Selamat Datang Kembali!">
-      <LoginForm />
+      {/* Komponen ini sekarang menangani alur login DAN verifikasi */}
+      <LoginForm /> 
+      
       <p className="text-center text-gray-500 mt-6">
         Belum punya akun?{' '}
         <Link to="/register" className="text-primary font-semibold hover:underline">
