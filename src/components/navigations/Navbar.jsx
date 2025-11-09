@@ -1,14 +1,12 @@
-// src/components/Navbar.jsx
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBars, FaTimes, FaUserCircle, FaSignOutAlt } from 'react-icons/fa'; // <-- IMPORT IKON BARU
-import ProfileDropDownUser from './auth/ProfileDropDownUser'; // <-- IMPORT DROPDOWN
-import useAuth from '../hooks/useAuth'; // <-- IMPORT useAuth
+import { FaBars, FaTimes, FaUserCircle, FaSignOutAlt } from 'react-icons/fa';
+import ProfileDropDownUser from '../ux/ProfileDropDownUser';
+import useAuth from '../../hooks/useAuth';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { logout } = useAuth(); // Ambil fungsi logout
+  const { logout } = useAuth(); 
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -16,8 +14,8 @@ const Navbar = () => {
 
   // Fungsi logout khusus untuk mobile menu
   const handleLogoutMobile = () => {
-    setIsOpen(false); // Tutup menu
-    logout(); // Panggil logout
+    setIsOpen(false);
+    logout();
   };
 
   const navLinks = [
@@ -63,9 +61,6 @@ const Navbar = () => {
 
           {/* Tombol Hamburger (Mobile) */}
           <div className="md:hidden flex items-center">
-            {/* Di mobile, kita akan gunakan tombol ProfileDropDownUser
-              karena dropdown-nya sudah diatur untuk tampil di tengah
-            */}
             <ProfileDropDownUser />
 
             <button
@@ -93,11 +88,6 @@ const Navbar = () => {
               {link.text}
             </Link>
           ))}
-
-          {/* Link Profile & Logout tidak perlu lagi di sini,
-            karena sudah ditangani oleh ProfileDropDownUser 
-            yang kita letakkan di sebelah tombol hamburger.
-          */}
         </div>
       </div>
     </nav>

@@ -1,5 +1,3 @@
-// src/components/Sidebar.jsx
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
@@ -14,7 +12,7 @@ import {
   FaChevronRight,
   FaTags,
 } from 'react-icons/fa';
-import ProfileDropDownAdmin from './auth/ProfileDropDownAdmin'; // <-- IMPORT
+import ProfileDropDownAdmin from '../ux/ProfileDropDownAdmin';
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);

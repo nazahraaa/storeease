@@ -1,8 +1,6 @@
-// src/layouts/UserLayout.jsx
-
 import React from 'react';
-import Navbar from '../components/Navbar';
-import { Outlet } from 'react-router-dom'; // <-- IMPORT
+import Navbar from '../components/navigations/Navbar';
+import { Outlet } from 'react-router-dom';
 
 const UserLayout = ({ children }) => {
   return (

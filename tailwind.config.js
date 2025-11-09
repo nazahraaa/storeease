@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary': '#FF69B4', // Hot Pink
-        'secondary': '#FFC0CB', // Pink
+        'primary': '#FF69B4', 
+        'secondary': '#FFC0CB', 
         'light': '#FFFFFF',
       },
       fontFamily: {

@@ -1,7 +1,5 @@
-// src/layouts/AuthLayout.jsx
-
 import React from 'react';
-import BackgroundAnimated from '../components/BackgroundAnimated';
+import BackgroundAnimated from '../components/ui/BackgroundAnimated';
 import { motion } from 'framer-motion';
 
 const AuthLayout = ({ children, title }) => {
@@ -16,7 +14,7 @@ const AuthLayout = ({ children, title }) => {
       >
         <div className="text-center mb-6">
           <img
-            src="/logo_storeease.png" // Path diperbarui dari 'public'
+            src="/logo_storeease.png"
             alt="StoreEase Logo"
             className="w-24 h-24 mx-auto mb-4 object-contain"
           />

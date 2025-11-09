@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaUser, FaEnvelope, FaLock, FaShieldAlt } from 'react-icons/fa';
-import InputField from '../InputField';
+import InputField from '../ui/InputField';
 import AuthServices from '../../services/AuthServices';
 import useAuth from '../../hooks/useAuth';
 
