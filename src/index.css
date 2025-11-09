@@ -3,3 +3,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* --- TAMBAHAN GAYA GLOBAL --- */
+html {
+  /* Efek scroll yang halus saat mengklik link anchor */
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  /* Menerapkan transisi ke semua properti (warna, transform, dll) */
+  /* Ini membuat efek hover terasa lebih "smooth" di seluruh web */
+  @apply transition-all duration-200 ease-in-out;
+}
+
+/* Scrollbar styling (Opsional tapi bagus) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-secondary rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary;
+}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion'; // <-- Impor motion
 import {
   FaTachometerAlt,
   FaArrowCircleDown,
@@ -22,7 +23,6 @@ const Sidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
-  // Navigasi link diambil dari file Sidebar.jsx Anda sebelumnya
   const navLinks = [
     { to: '/admin/dashboard', icon: <FaTachometerAlt />, text: 'Dashboard' },
     { to: '/admin/batch-management', icon: <FaTags />, text: 'Manajemen Batch/Lot Number' },
@@ -36,37 +36,66 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`bg-primary text-light h-screen p-4 flex flex-col justify-between transition-all duration-300 ${
+      className={`bg-primary text-light h-screen p-4 flex flex-col justify-between transition-all duration-300 shadow-lg ${
         isCollapsed ? 'w-20' : 'w-64'
       }`}
     >
       {/* Bagian Atas: Logo dan Navigasi */}
       <div>
+        {/* --- PERBAIKAN LOGO & JUDUL --- */}
         <div className="flex items-center justify-between mb-10">
+          {/* Logo dan Judul saat expand */}
           {!isCollapsed && (
-            <h1 className="text-2xl font-bold">
-              Store<span className="text-secondary">Ease</span>
-            </h1>
+            <div className="flex items-center">
+              <img 
+                src="/logo-thumbnail.png" 
+                alt="StoreEase Logo" 
+                className="w-10 h-10 object-contain" 
+              />
+              <h1 className="text-2xl font-bold ml-2">
+                Store<span className="text-secondary">Ease</span>
+              </h1>
+            </div>
           )}
+          
+          {/* Tampilkan logo saja saat collapsed */}
+          {isCollapsed && (
+             <img 
+                src="/logo-thumbnail.png" 
+                alt="StoreEase Logo" 
+                className="w-10 h-10 object-contain mx-auto" // Posisikan di tengah
+              />
+          )}
+          
+          {/* Tombol Toggle */}
           <button onClick={toggleSidebar} className="text-light focus:outline-none">
             {isCollapsed ? <FaChevronRight size={20} /> : <FaChevronLeft size={20} />}
           </button>
         </div>
+
+        {/* --- PERBAIKAN ANIMASI LINK --- */}
         <ul>
-          {navLinks.map((link) => (
-            <li key={link.to} className="mb-4">
+          {navLinks.map((link, index) => (
+            <motion.li 
+              key={link.to} 
+              className="mb-4"
+              // Animasi stagger untuk setiap link
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.05, type: 'spring', stiffness: 100 }}
+            >
               <Link
                 to={link.to}
                 className={`flex items-center p-3 rounded-lg transition-all duration-300 ${
                   location.pathname === link.to
-                    ? 'bg-pink-600'
-                    : 'hover:bg-pink-600'
-                }`}
+                    ? 'bg-pink-600 shadow-md' // Beri shadow saat aktif
+                    : 'hover:bg-pink-600 hover:translate-x-1' // Efek hover
+                } ${isCollapsed ? 'justify-center' : ''}`} // Center icon saat collapsed
               >
-                <span className={`mr-4 text-xl ${isCollapsed ? 'mx-auto' : ''}`}>{link.icon}</span>
+                <span className={`text-xl ${isCollapsed ? '' : 'mr-4'}`}>{link.icon}</span>
                 {!isCollapsed && <span className="font-medium">{link.text}</span>}
               </Link>
-            </li>
+            </motion.li>
           ))}
         </ul>
       </div>

@@ -1,8 +1,10 @@
+// server/server.js
 import express from 'express';
 import 'dotenv/config';
 import cors from 'cors';
 import connectDB from './config/db.js';
 import authRoutes from './routes/auth.js';
+import batchRoutes from './routes/batch.js'; // <-- TAMBAHKAN INI
 
 connectDB();
 
@@ -20,6 +22,9 @@ app.get('/', (req, res) => {
 
 // Gunakan Rute Autentikasi
 app.use('/api/auth', authRoutes);
+
+// Gunakan Rute Batch
+app.use('/api/batch', batchRoutes); // <-- TAMBAHKAN INI
 
 // Jalankan Server
 app.listen(PORT, () => {
