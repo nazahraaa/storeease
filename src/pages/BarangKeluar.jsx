@@ -1,8 +1,7 @@
-// src/pages/BarangKeluar.jsx
-
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaArrowCircleUp } from 'react-icons/fa';
+import CustomSelect from '../components/CustomSelect'; 
 
 const BarangKeluar = () => {
   const pageVariants = {
@@ -11,22 +10,34 @@ const BarangKeluar = () => {
   };
 
   // Dummy data untuk dropdown
-  const products = [
-    'Somethinc Niacinamide Serum',
-    'Whitelab Brightening Day Cream',
-    'Azarine Hydrasoothe Sunscreen Gel',
+  const productOptions = [
+    { value: 'SKU-001', label: 'Somethinc Niacinamide Serum' },
+    { value: 'SKU-002', label: 'Whitelab Brightening Day Cream' },
+    { value: 'SKU-003', label: 'Azarine Hydrasoothe Sunscreen Gel' },
   ];
 
-  // Dummy data batch yang tersedia untuk produk yang dipilih
-  const availableBatches = [
-    { id: 'B005', stock: 250, expiry: '2024-10-15' }, // Akan kadaluarsa duluan
-    { id: 'B001', stock: 150, expiry: '2025-10-01' },
+  // Dummy data batch yang tersedia (diubah formatnya)
+  const batchOptions = [
+    { value: 'B005', label: 'B005 (Sisa: 250 | Exp: 2024-10-15)' },
+    { value: 'B001', label: 'B001 (Sisa: 150 | Exp: 2025-10-01)' },
   ];
+  
+  // Opsi untuk tujuan
+  const tujuanOptions = [
+    { value: 'Penjualan', label: 'Penjualan' },
+    { value: 'Rusak', label: 'Rusak / Dibuang' },
+    { value: 'Sampel Promosi', label: 'Sampel Promosi' },
+    { value: 'Lainnya', label: 'Lainnya' },
+  ];
+
+  // Tambahkan state untuk semua select
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedBatch, setSelectedBatch] = useState(null);
+  const [selectedTujuan, setSelectedTujuan] = useState('Penjualan');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Di sini logika untuk validasi (jumlah keluar <= stok batch), 
-    // mengirim data ke backend, dan mengurangi stok
+    console.log("Produk:", selectedProduct, "Batch:", selectedBatch, "Tujuan:", selectedTujuan);
     alert('Logika penyimpanan data akan diimplementasikan di sini.');
   };
 
@@ -47,25 +58,24 @@ const BarangKeluar = () => {
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700 font-medium mb-2">Pilih Produk</label>
-            <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-              <option>-- Pilih Produk --</option>
-              {products.map(p => <option key={p} value={p}>{p}</option>)}
-            </select>
+            <CustomSelect
+              options={productOptions}
+              value={selectedProduct}
+              onChange={setSelectedProduct}
+              placeholder="Pilih Produk"
+            />
           </div>
-          
+
           <div className="mb-4">
             <label className="block text-gray-700 font-medium mb-2">
               Pilih Batch/Lot (FEFO - First Expired, First Out)
             </label>
-            <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-              <option>-- Pilih Batch yang Tersedia --</option>
-              {/* Sistem merekomendasikan batch dengan tanggal kadaluarsa terdekat */}
-              {availableBatches.map(b => (
-                <option key={b.id} value={b.id}>
-                  {`${b.id} (Sisa: ${b.stock} | Exp: ${b.expiry})`}
-                </option>
-              ))}
-            </select>
+            <CustomSelect
+              options={batchOptions}
+              value={selectedBatch}
+              onChange={setSelectedBatch}
+              placeholder="Pilih Batch yang Tersedia"
+            />
             <p className="text-sm text-gray-500 mt-1">Batch diurutkan berdasarkan tanggal kadaluarsa terdekat.</p>
           </div>
 
@@ -80,12 +90,11 @@ const BarangKeluar = () => {
 
           <div className="mb-4">
             <label className="block text-gray-700 font-medium mb-2">Tujuan</label>
-            <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-              <option value="Penjualan">Penjualan</option>
-              <option value="Rusak">Rusak / Dibuang</option>
-              <option value="Sampel Promosi">Sampel Promosi</option>
-              <option value="Lainnya">Lainnya</option>
-            </select>
+            <CustomSelect
+              options={tujuanOptions}
+              value={selectedTujuan}
+              onChange={setSelectedTujuan}
+            />
           </div>
 
           {/* Tombol Aksi */}

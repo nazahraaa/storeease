@@ -1,8 +1,7 @@
-// src/pages/BarangMasuk.jsx
-
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaSave } from 'react-icons/fa';
+import CustomSelect from '../components/CustomSelect';
 
 const BarangMasuk = () => {
   const pageVariants = {
@@ -10,18 +9,21 @@ const BarangMasuk = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
-  // Dummy data untuk dropdown, nantinya ini akan diambil dari database
-  const products = [
-    'Somethinc Niacinamide Serum',
-    'Whitelab Brightening Day Cream',
-    'Azarine Hydrasoothe Sunscreen Gel',
-    'Avoskin Miraculous Refining Toner',
-    'Scarlett Whitening Acne Serum',
+  // Dummy data untuk dropdown, diubah menjadi format { value, label }
+  const productOptions = [
+    { value: 'SKU-001', label: 'Somethinc Niacinamide Serum' },
+    { value: 'SKU-002', label: 'Whitelab Brightening Day Cream' },
+    { value: 'SKU-003', label: 'Azarine Hydrasoothe Sunscreen Gel' },
+    { value: 'SKU-004', label: 'Avoskin Miraculous Refining Toner' },
+    { value: 'SKU-005', label: 'Scarlett Whitening Acne Serum' },
   ];
+  
+  // Tambahkan state untuk menyimpan nilai terpilih
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Di sini logika untuk validasi, mengirim data ke backend, dan update stok
+    console.log("Produk Terpilih:", selectedProduct);
     alert('Logika penyimpanan data akan diimplementasikan di sini.');
   };
 
@@ -45,10 +47,12 @@ const BarangMasuk = () => {
             <div>
               <div className="mb-4">
                 <label className="block text-gray-700 font-medium mb-2">Pilih Produk</label>
-                <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                  <option>-- Pilih Produk --</option>
-                  {products.map(p => <option key={p} value={p}>{p}</option>)}
-                </select>
+                <CustomSelect
+                  options={productOptions}
+                  value={selectedProduct}
+                  onChange={setSelectedProduct}
+                  placeholder="Pilih Produk"
+                />
               </div>
               <div className="mb-4">
                 <label className="block text-gray-700 font-medium mb-2">Nomor Batch / Lot Baru</label>
