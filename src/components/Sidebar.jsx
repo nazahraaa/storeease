@@ -1,8 +1,9 @@
+// src/components/Sidebar.jsx
+
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   FaTachometerAlt,
-  FaBoxOpen,
   FaArrowCircleDown,
   FaArrowCircleUp,
   FaFileAlt,
@@ -11,8 +12,9 @@ import {
   FaQuestionCircle,
   FaChevronLeft,
   FaChevronRight,
-  FaTags, // Ikon baru untuk Batch/Lot Number
+  FaTags,
 } from 'react-icons/fa';
+import ProfileDropDownAdmin from './auth/ProfileDropDownAdmin'; // <-- IMPORT
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -22,9 +24,9 @@ const Sidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
+  // Navigasi link diambil dari file Sidebar.jsx Anda sebelumnya
   const navLinks = [
     { to: '/admin/dashboard', icon: <FaTachometerAlt />, text: 'Dashboard' },
-    // PERUBAHAN DI SINI: Teks dan Ikon diperbarui
     { to: '/admin/batch-management', icon: <FaTags />, text: 'Manajemen Batch/Lot Number' },
     { to: '/admin/barang-masuk', icon: <FaArrowCircleDown />, text: 'Barang Masuk' },
     { to: '/admin/barang-keluar', icon: <FaArrowCircleUp />, text: 'Barang Keluar' },
@@ -40,6 +42,7 @@ const Sidebar = () => {
         isCollapsed ? 'w-20' : 'w-64'
       }`}
     >
+      {/* Bagian Atas: Logo dan Navigasi */}
       <div>
         <div className="flex items-center justify-between mb-10">
           {!isCollapsed && (
@@ -62,13 +65,16 @@ const Sidebar = () => {
                     : 'hover:bg-pink-600'
                 }`}
               >
-                <span className="mr-4 text-xl">{link.icon}</span>
+                <span className={`mr-4 text-xl ${isCollapsed ? 'mx-auto' : ''}`}>{link.icon}</span>
                 {!isCollapsed && <span className="font-medium">{link.text}</span>}
               </Link>
             </li>
           ))}
         </ul>
       </div>
+
+      {/* Bagian Bawah: Profile Dropdown */}
+      <ProfileDropDownAdmin isCollapsed={isCollapsed} />
     </div>
   );
 };

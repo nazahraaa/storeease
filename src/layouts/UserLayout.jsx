@@ -1,5 +1,8 @@
+// src/layouts/UserLayout.jsx
+
 import React from 'react';
 import Navbar from '../components/Navbar';
+import { Outlet } from 'react-router-dom'; // <-- IMPORT
 
 const UserLayout = ({ children }) => {
   return (
@@ -7,8 +10,7 @@ const UserLayout = ({ children }) => {
       <Navbar />
       <main>
         <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          {/* Konten dari setiap halaman akan ditampilkan di sini */}
-          {children}
+          <Outlet />
         </div>
       </main>
     </div>
