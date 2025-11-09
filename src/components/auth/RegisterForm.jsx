@@ -1,5 +1,3 @@
-// src/components/auth/RegisterForm.jsx
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -41,7 +39,7 @@ const RegisterForm = () => {
     }
   };
 
-  // --- LANGKAH 1: Handle Submit Registrasi ---
+  // --- Handle Submit Registrasi ---
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     setError(null);
@@ -66,7 +64,7 @@ const RegisterForm = () => {
     }
   };
 
-  // --- LANGKAH 2: Handle Submit Verifikasi ---
+  // --- Handle Submit Verifikasi ---
   const handleVerifySubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -77,11 +75,10 @@ const RegisterForm = () => {
       const data = await AuthServices.verify(email, code);
       login(data);
       
-      // **PERBAIKAN DI SINI:** Cek 'data.user' sebelum cek 'data.user.role'
+      // Cek 'data.user' sebelum cek 'data.user.role'
       if (data?.user?.role === 'admin') {
         navigate('/admin/dashboard', { replace: true });
       } else {
-        // Asumsi default adalah user
         navigate('/user/beranda', { replace: true }); 
       }
 

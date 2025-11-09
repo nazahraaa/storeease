@@ -50,14 +50,11 @@ const LoginForm = () => {
     }
   };
 
-  // --- Navigasi Aman (Fungsi Helper) ---
   // Kita buat fungsi ini untuk menghindari duplikasi kode
   const navigateUser = (data) => {
-    // **PERBAIKAN DI SINI:** Cek 'data.user' sebelum cek 'data.user.role'
     if (data?.user?.role === 'admin') {
       navigate('/admin/dashboard', { replace: true });
     } else {
-      // Asumsi default adalah user
       navigate('/user/beranda', { replace: true }); 
     }
   };
@@ -73,7 +70,6 @@ const LoginForm = () => {
       const data = await AuthServices.verifyLogin(emailForVerify, code);
       authContextLogin(data);
       
-      // Gunakan fungsi navigasi yang aman
       navigateUser(data);
 
     } catch (err) {
@@ -94,7 +90,6 @@ const LoginForm = () => {
       const data = await AuthServices.verify(emailForVerify, code);
       authContextLogin(data);
       
-      // Gunakan fungsi navigasi yang aman
       navigateUser(data);
 
     } catch (err) {

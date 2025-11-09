@@ -1,5 +1,3 @@
-// src/components/auth/ProfileDropDownAdmin.jsx
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
@@ -21,7 +19,7 @@ const ProfileDropDownAdmin = ({ isCollapsed }) => {
       const last = parts.length > 1 ? parts[parts.length - 1]?.[0] : '';
       return (first + last).toUpperCase();
     } catch (e) {
-      return "A"; // Fallback jika nama tidak valid
+      return "A";
     }
   };
 
@@ -32,7 +30,7 @@ const ProfileDropDownAdmin = ({ isCollapsed }) => {
 
   // Fungsi untuk handle logout
   const handleLogout = () => {
-    logout(); // Fungsi logout dari AuthContext akan menangani navigasi
+    logout();
   };
 
   // Efek untuk menutup dropdown saat klik di luar area
@@ -44,7 +42,6 @@ const ProfileDropDownAdmin = ({ isCollapsed }) => {
     };
     // Tambahkan event listener
     document.addEventListener('mousedown', handleClickOutside);
-    // Bersihkan saat komponen unmount
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -57,9 +54,9 @@ const ProfileDropDownAdmin = ({ isCollapsed }) => {
         <div className="absolute bottom-full left-0 mb-2 w-48 bg-white rounded-md shadow-lg z-50 ring-1 ring-black ring-opacity-5">
           <div className="py-1">
             <Link
-              to="/admin/profile" // Kita asumsikan rute profile admin
+              to="/admin/profile" 
               className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              onClick={() => setIsOpen(false)} // Tutup setelah di-klik
+              onClick={() => setIsOpen(false)}
             >
               <FaUserCircle className="mr-3" />
               Profile
