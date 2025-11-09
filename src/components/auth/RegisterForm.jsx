@@ -39,7 +39,7 @@ const RegisterForm = () => {
     }
   };
 
-  // --- Handle Submit Registrasi ---
+  // --- LANGKAH 1: Handle Submit Registrasi ---
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     setError(null);
@@ -64,7 +64,7 @@ const RegisterForm = () => {
     }
   };
 
-  // --- Handle Submit Verifikasi ---
+  // --- LANGKAH 2: Handle Submit Verifikasi ---
   const handleVerifySubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -75,7 +75,6 @@ const RegisterForm = () => {
       const data = await AuthServices.verify(email, code);
       login(data);
       
-      // Cek 'data.user' sebelum cek 'data.user.role'
       if (data?.user?.role === 'admin') {
         navigate('/admin/dashboard', { replace: true });
       } else {
@@ -200,7 +199,7 @@ const RegisterForm = () => {
         {isLoading ? 'Memverifikasi...' : 'Verifikasi & Lanjutkan'}
       </motion.button>
 
-      <div className="text-center mt-4">
+      <div className="flex justify-between items-center mt-4">
         <button
           type="button"
           onClick={handleResendCode}
@@ -208,6 +207,20 @@ const RegisterForm = () => {
           className="text-sm text-primary font-semibold hover:underline disabled:opacity-50"
         >
           {isLoading ? 'Mengirim...' : 'Kirim Ulang Kode'}
+        </button>
+
+        <button
+          type="button"
+          onClick={() => { 
+            setStep('register'); 
+            setError(null); 
+            setMessage(null); 
+            setCode(''); 
+          }}
+          disabled={isLoading}
+          className="text-sm text-gray-500 hover:underline disabled:opacity-50"
+        >
+          Kembali ke Register
         </button>
       </div>
     </form>
